@@ -7,6 +7,7 @@
     <link rel="icon" type="image/svg+xml" href="emu.svg">
     <!-- <link rel="icon" type="image/png+xml" href="emu.png"> -->
     <title>Emu Mart Rwanda | Online Shopping mall for Tech, Clothes, Food & Crafts in Rwanda</title>
+    <link rel="stylesheet" type="text/css" href="respo.css">
     <meta name="description" content="Emu Mart Rwanda - Best online store in Rwanda for tech gadgets, clothes, tools, LED wall arts, Rwandan crafts, food & snacks. Free delivery in Kigali. Shop now!">
     <meta name="keywords" content="Rwanda online shopping, Kigali ecommerce, tech gadgets Rwanda, clothes Rwanda, Rwandan crafts, food delivery Rwanda, LED wall arts, tools Rwanda">
     <meta name="author" content="Emu Mart Rwanda">
@@ -1124,8 +1125,88 @@ document.addEventListener('click', function(e) {
 <button id="scrollDownBtn" class="scroll-down-btn">
     <i class="fas fa-chevron-down"></i>
 </button>
+<script type="text/javascript">
+    // Search bar toggle functionality
+function initSearchToggle() {
+    // Create toggle button if it doesn't exist
+    if (!document.getElementById('toggleSearchBtn')) {
+        const headerContainer = document.querySelector('.header-container');
+        const cartIcon = document.querySelector('.cart-icon');
+        
+        const toggleBtn = document.createElement('button');
+        toggleBtn.id = 'toggleSearchBtn';
+        toggleBtn.className = 'toggle-search-btn';
+        toggleBtn.innerHTML = '<i class="fas fa-search"></i>';
+        
+        // Insert button before cart icon
+        headerContainer.insertBefore(toggleBtn, cartIcon);
+        
+        toggleBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const searchBar = document.querySelector('.search-bar');
+            searchBar.classList.toggle('show');
+            if (searchBar.classList.contains('show')) {
+                setTimeout(() => {
+                    searchBar.querySelector('input').focus();
+                }, 100);
+            }
+        });
+        
+        // Hide search bar when clicking outside
+        document.addEventListener('click', function(e) {
+            const searchBar = document.querySelector('.search-bar');
+            const toggleBtn = document.getElementById('toggleSearchBtn');
+            if (!searchBar.contains(e.target) && !toggleBtn.contains(e.target)) {
+                searchBar.classList.remove('show');
+            }
+        });
+    }
+}
+
+// Call the function when page loads
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSearchToggle);
+} else {
+    initSearchToggle();
+}
+</script>
 
 <style>
+
+    /* Search bar toggle for mobile */
+.toggle-search-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    display: none;
+    margin-left: auto;
+    margin-right: 10px;
+    margin-bottom: 40px;
+}
+
+@media (max-width: 992px) {
+    .toggle-search-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .search-bar {
+        display: none !important;
+        width: 100%;
+        order: 3;
+        margin: 1rem 0 0 !important;
+    }
+    
+    .search-bar.show {
+        display: block !important;
+    }
+}
+
 .scroll-down-btn {
     position: absolute;
     bottom: 20px;
@@ -1228,7 +1309,7 @@ document.getElementById('scrollDownBtn').addEventListener('click', function() {
         </div>
         
         <div class="container">
-            <p class="copyright">© 2025 Emu Mart Rwanda. <span data-en="All rights reserved." data-rw="Amategeko n'amabwiriza birubahirizwa.">All rights reserved.</span> | <span data-en="Online Shopping Rwanda" data-rw="Gurira kuri interineti m'URwanda">Online Shopping Rwanda</span></p>
+            <p class="copyright">© 2026 Emu Mart Rwanda. <span data-en="All rights reserved." data-rw="Amategeko n'amabwiriza birubahirizwa.">All rights reserved.</span> | <span data-en="Online Shopping Rwanda" data-rw="Gurira kuri interineti m'URwanda">Online Shopping Rwanda</span></p>
         </div>
     </footer>
 
